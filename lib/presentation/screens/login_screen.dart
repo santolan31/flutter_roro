@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_roro/presentation/providers/counter_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rive/rive.dart';
 
 class LoginScreens extends ConsumerWidget {
   const LoginScreens({super.key});
@@ -9,38 +11,120 @@ class LoginScreens extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final bool themeMode = ref.watch(themeapp);
+    final TextEditingController phonController = TextEditingController();
+    
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                ref.read(themeapp.notifier).update((state) => !state);
-              },
-              icon: Icon(themeMode ? Icons.dark_mode : Icons.light_mode))
-        ],
-      ),
-      body: Column(
+      body: Stack(
         children: [
-          const SizedBox(
-            height: 20,
-          ),
+           
+
+
           Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Text(
-                "Login",
-                style: Theme.of(context).textTheme.bodyLarge,
-              )),
-          const SizedBox(
-            height: 50,
+            padding:
+                const EdgeInsets.only(left: 4, right: 4, top: 5, bottom: 4),
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadiusDirectional.circular(10),
+                  color: Color.fromRGBO(255, 255, 253, 1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.red,
+                      blurRadius: 25.0,
+                      spreadRadius: 4
+                    )
+                  ]
+                  
+                    
+                  ),
+            ),
           ),
-          Padding(
-              padding: const EdgeInsets.only(left: 60),
-              child: Text(
-                "Enter Your Phone number",
-                style: TextStyle(
-                    color: themeMode ? Colors.red.shade50 : Theme.of(context).primaryColor, fontSize: 30),
-              ))
+          Row(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 8),
+                child: IconButton(
+                    onPressed: () {
+                      context.pop();
+                    },
+                    icon: const Icon(Icons.arrow_back)),
+              ),
+              const Spacer(),
+              IconButton(
+                  onPressed: () {},
+                  icon: themeMode
+                      ? const Icon(Icons.light_mode)
+                      : const Icon(Icons.dark_mode)),
+              const SizedBox(
+                width: 20,
+              )
+            ],
+          ),
+          Center(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 100,
+                ),
+                const SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: RiveAnimation.asset(
+                    "assets/images/login.riv",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  "Registrate",
+                  style: TextStyle(fontSize: 25),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text("Te enviaremos un codigo de autenticación"),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: 360,
+                  height: 60,
+                  child: Padding(padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: TextFormField(
+                      
+                      controller: phonController,
+                    decoration: InputDecoration(
+                      filled: true,
+                      hintText: "+57 Ingresa tu numero",fillColor:Colors.white38,
+                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5),
+                    borderSide: const BorderSide(color: Colors.black12)
+                    
+                    ),
+                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.black12)),
+                    prefixIcon: Container(padding: const EdgeInsets.all(0.8),
+                    child: InkWell(onTap: (){},
+                   child: SizedBox(
+                    height: 30,
+                    width: 20,
+                    child: const Image(image: AssetImage("assets/images/colombia.png")))
+
+                    
+                    
+                    ),
+                    
+                    ),
+                   contentPadding:const EdgeInsets.symmetric(horizontal:10 ,vertical:-40 ), 
+                     ),
+                   
+                    ),
+                  ))
+              ],
+            ),
+          )
         ],
       ),
     );

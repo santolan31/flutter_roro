@@ -120,60 +120,63 @@ class _Slide extends StatelessWidget {
               elevation: 10,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.white
+                  color: Color.fromARGB(255, 227, 82, 82)
                 ),
               ),
             ),
           ),
 
+          //* Background de la aplicación
           Padding(
-            padding: const EdgeInsets.only(left:4 ,right:4 ,top:2 ,bottom:4 ),
-            child: Material(
-              elevation: 10,
+            padding:const EdgeInsets.only(top: 5 ,left:6 , right: 6 , bottom: 4 ) ,
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadiusDirectional.only(topStart: Radius.circular(10)),
-                color: const Color.fromRGBO(239, 98, 98, 1),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.red,
-                    blurRadius: 25.0,
 
-                  )
-                ] 
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadiusDirectional.circular(10)
               ),
-            )),
-          ),
+              
+            ),
+          ), 
+         
          Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50,),
            child: Column(
             
                  children: [    
-            const SizedBox(height: 50,),
-         
-           const Text("Roro", style: TextStyle(fontSize: 30),
-           
-           ),
+            const SizedBox(height: 20,),
+          //*Titulo
+          SizedBox(
+            height: 100,
+            width: 100,
+            child: Image.asset("assets/images/titulo.png",fit: BoxFit.cover,), 
+            
+            ) ,       
+
+
            const SizedBox(
-            height: 60,
+            height: 10,
+            
            ), 
-         
+          //* Imagenes de el scroll horizontal
            SizedBox(
-            height:200 ,
-            width:200 ,
+            height:120 ,
+            width:120 ,
              child: RiveAnimation.asset(url,
              fit:BoxFit.fill,),
            ),
          
             const SizedBox(height: 20,),  
          
+         //* subtitulo
            Text(title,maxLines: 2, style: const TextStyle(
-             color: Color.fromRGBO(255, 245, 224, 1),
-             fontSize: 18),),
+             color: Color.fromRGBO(252, 200, 209, 1),
+             fontSize: 30),),
             const SizedBox(height: 20,),
-
+         //* texto  
              Text( caption, style: GoogleFonts.aclonica(
-              color: const Color.fromRGBO(255, 245, 224, 1)
+              fontSize: 20,
+              color:Colors.white
              )
              
              
