@@ -26,9 +26,9 @@ class LoginScreens extends ConsumerWidget {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadiusDirectional.circular(10),
-                  color: Color.fromRGBO(255, 255, 253, 1),
+                  color: const Color.fromRGBO(255, 255, 253, 1),
                   boxShadow: [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.red,
                       blurRadius: 25.0,
                       spreadRadius: 4
@@ -87,19 +87,19 @@ class LoginScreens extends ConsumerWidget {
                 ),
                 const Text("Te enviaremos un codigo de autenticación"),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 SizedBox(
                   width: 360,
                   height: 60,
-                  child: Padding(padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Padding(padding: const EdgeInsets.symmetric(vertical: 5),
                     child: TextFormField(
                       
                       controller: phonController,
                     decoration: InputDecoration(
                       filled: true,
                       hintText: "+57 Ingresa tu numero",fillColor:Colors.white38,
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5),
+                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(1),
                     borderSide: const BorderSide(color: Colors.black12)
                     
                     ),
@@ -107,10 +107,12 @@ class LoginScreens extends ConsumerWidget {
                     borderSide: const BorderSide(color: Colors.black12)),
                     prefixIcon: Container(padding: const EdgeInsets.all(0.8),
                     child: InkWell(onTap: (){},
-                   child: SizedBox(
-                    height: 30,
-                    width: 20,
-                    child: const Image(image: AssetImage("assets/images/colombia.png")))
+                   child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12 , horizontal: 12),
+                     child: Image(
+                       fit: BoxFit.fill,
+                       image: AssetImage("assets/images/colombia.png", )),
+                   )
 
                     
                     
@@ -121,7 +123,14 @@ class LoginScreens extends ConsumerWidget {
                      ),
                    
                     ),
-                  ))
+                  )), 
+                 const SizedBox(height: 20,),
+                SizedBox(
+                  width: 250,
+                  child: FilledButton(
+                    style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(239, 98, 98, 1))),
+                    onPressed: (){}, child:const Text("Enviame el codigo")))
+                
               ],
             ),
           )
